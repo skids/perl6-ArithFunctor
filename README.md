@@ -8,6 +8,7 @@ ArithLFunctor and ArithRFunctor
 This role provides an easy way to create a class that survives
 through arithmetic.  That is to say, you can do this:
 
+```perl6
 use ArithLFunctor;
 class A does ArithLFunctor {
       has $.i = 1;
@@ -17,6 +18,7 @@ class A does ArithLFunctor {
 }
 (A.new * 2 + 1).otherstuff.say; # says OHAI
 (A.new * 2 + 1).i.say;          # says 3
+```
 
 ## HOW
 
