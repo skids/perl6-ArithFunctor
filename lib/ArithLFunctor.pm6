@@ -154,10 +154,10 @@ my multi sub infix:«+<» (ArithLFunctor \a, ArithLFunctor \b) is export {
 my multi sub prefix:<+>(ArithLFunctor \a) is export { a.Generic(+a.Numeric) }
 my multi sub prefix:<->(ArithLFunctor \a) is export { a.Generic(-a.Numeric) }
 my multi sub prefix:<+^>(ArithLFunctor \a) is export { a.Generic(+^a.Numeric) }
-my multi sub prefix:<-->(ArithLFunctor $a is rw) is export { $a .= Recoup($a.Numeric - 1) }
-my multi sub prefix:<++>(ArithLFunctor $a is rw) is export { $a .= Recoup($a.Numeric + 1) }
-my multi sub postfix:<-->(ArithLFunctor $a is rw) is export { my $b = $a.clone; $a .= Recoup($a.Numeric - 1); $b; }
-my multi sub postfix:<++>(ArithLFunctor $a is rw) is export { my $b = $a.clone; $a .= Recoup($a.Numeric + 1); $b; }
+my multi sub prefix:<-->(ArithLFunctor $a is rw) is export { $a .= Generic($a.Numeric - 1) }
+my multi sub prefix:<++>(ArithLFunctor $a is rw) is export { $a .= Generic($a.Numeric + 1) }
+my multi sub postfix:<-->(ArithLFunctor $a is rw) is export { my $b = $a.clone; $a .= Generic($a.Numeric - 1); $b; }
+my multi sub postfix:<++>(ArithLFunctor $a is rw) is export { my $b = $a.clone; $a .= Generic($a.Numeric + 1); $b; }
 my multi sub postfix:<i>(ArithLFunctor \a --> Complex:D) { a.Generic(a.Numeric * Complex.new(0e0, 1e0)) }
 
 my multi sub abs(ArithLFunctor \a) is export { a.Generic(abs a.Numeric) }
